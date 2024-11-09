@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link rel="stylesheet" href="invitation.css">
+    <script src="lib/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div id="weddingCard">
+        <div class="card-front">
+            <h2>Wedding Invitation</h2>
+            <div class="heart-animation">
+                <span class="heart"></span>
+                <span class="heart"></span>
+                <span class="heart"></span>
+            </div>
+            <p>Dear Guests,</p>
+            <p>We are pleased to invite you to the wedding of</p>
+            <div class="bride-groom">
+                <p>{{bride}} & {{groom}}</p>
+            </div>
+            <div class="date-time">
+                <p>Date: {{date}}</p>
+                <p>Time: {{time}}</p>
+            </div>
+            <div class="venue">
+                <p>Venue: {{place}}</p>
+            </div>
+            <div class="rsvp">
+                <p>Please join us to celebrate our special day.</p>
+            </div>
+            <button class="save-button" onclick="saveInvitation()">Save Invitation</button>
+        </div>
+    </div>
+    <script>
+        function displayCard() {
+            var params = new URLSearchParams(window.location.search);
+            var brideName = params.get('bride');
+            var groomName = params.get('groom');
+            var weddingDate = params.get('date');
+            var weddingTime = params.get('time');
+            var weddingPlace = params.get('place');
+            var rsvpDate = params.get('rsvpDate'); // Add RSVP date parameter
+
+            var cardDiv = document.getElementById('weddingCard');
+            cardDiv.innerHTML = cardDiv.innerHTML.replace('{{bride}}', brideName);
+            cardDiv.innerHTML = cardDiv.innerHTML.replace('{{groom}}', groomName);
+            cardDiv.innerHTML = cardDiv.innerHTML.replace('{{date}}', weddingDate);
+            cardDiv.innerHTML = cardDiv.innerHTML.replace('{{time}}', weddingTime);
+            cardDiv.innerHTML = cardDiv.innerHTML.replace('{{place}}', weddingPlace);
+            cardDiv.innerHTML = cardDiv.innerHTML.replace('{{rsvpDate}}', rsvpDate); // Replace RSVP date
+        }
+
+        function saveInvitation() {
+            html2canvas(document.getElementById('weddingCard')).then(function(canvas) {
+                var imgData = canvas.toDataURL('image/png');
+                var pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'px',
+                    format: 'a4'
+                });
+                pdf.addImage(imgData, 'JPEG', 20, 20);
+                pdf.save('WeddingInvitation.pdf');
+            });
+        }
+
+        displayCard();
+        window.onload = function() {
+        if (typeof html2canvas === 'undefined') {
+            console.error('html2canvas is not loaded');
+        } else {
+            console.log('html2canvas is loaded');
+        }
+        
+        if (typeof jsPDF === 'undefined') {
+            console.error('jsPDF is not loaded');
+        } else {
+            console.log('jsPDF is loaded');
+        }
+    };
+    </script>
+</body>
+</html>

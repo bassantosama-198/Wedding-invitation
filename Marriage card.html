@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Marriage</title>
+    <link rel="stylesheet" href="Card.Css">
+</head>
+<body>
+    <header>
+        <ol class="nav">
+            <li><a href="#title">Home</a></li>
+            <li><a href="#card">Card</a></li>
+            <li><a href="#contact">Contact us</a></li>
+        </ol>
+    </header>
+    <div id="title">
+        <h1>Happy Marriage</h1>
+    </div>
+    <div id="card">
+        <h2>Make your card</h2>
+        <form id="weddingForm" action="card-display.html" method="get">
+            <div class="names">
+                <div class="bride">
+                    <label for="bride">Bride Name</label>
+                    <input type="text" id="bride" name="bride">
+                </div>
+                <div class="groom"> 
+                    <label for="groom">Groom Name</label>
+                    <input type="text" id="groom" name="groom">
+                </div>
+                <div class="date">
+                    <label for="date">The wedding date</label>
+                    <input type="date" id="date" name="date">
+                </div>
+                <div class="place">
+                    <label for="place">The wedding place</label>
+                    <input type="text" id="place" name="place">
+                </div>
+                <div class="time">
+                    <label for="time">The wedding time</label>
+                    <input type="time" id="time" name="time">
+                </div>
+                <div>
+                    <input type="submit" value="Generate Card" class="submit">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="contact">
+        <h2 class="dd">Contact us</h2><br>
+        <div class="links-container">
+            <a class="oo" href="">whatsapp</a>
+            <a class="oo" href="">facebook</a>
+            <a class="oo" href="">linked in</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('weddingForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var form = document.getElementById('weddingForm');
+            var formData = new FormData(form);
+            var url = form.getAttribute('action');
+            url += '?' + new URLSearchParams(formData).toString();
+            window.location.href = url;
+        });
+    </script>
+</body>
+</html>

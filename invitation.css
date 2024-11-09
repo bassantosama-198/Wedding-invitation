@@ -1,0 +1,85 @@
+body {
+    font-family: 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fcf5f9; /* Match the main page background color */
+}
+
+#weddingCard {
+    width: 80%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fceef5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    position: fixed; /* Add this line to make the card fixed */
+    top: 50%; /* Adjust the top position as needed */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the card on the screen */
+}
+
+#weddingCard h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#weddingCard p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+#weddingCard .bride-groom {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+#weddingCard .date-time {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#weddingCard .venue {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#weddingCard .rsvp {
+    font-size: 16px;
+    color: #555;
+}
+
+#weddingCard .heart-animation {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+#weddingCard .heart-animation .heart {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ff69b4;
+    border-radius: 50%;
+    margin: 0 2px;
+}
+
+.save-button {
+    padding: 10px 20px;
+    background-color: #e681ab;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #d4598c;
+}
